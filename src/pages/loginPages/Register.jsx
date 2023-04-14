@@ -19,8 +19,29 @@ const Register = () => {
                 error: true
             })
             return
-
         }
+
+        if(password !== repeatPassword) {
+            setAlert({
+                msg:'Las contraseñas no son iguales',
+                error: true
+            })
+            return
+        }
+
+        if(password.length < 6) {
+            setAlert({
+                msg:'La contraseña tiene que tener un mínimo de 6 caracteres',
+                error: true
+            })
+            return
+        }
+
+        setAlert({})
+
+        // Creating users in the API
+
+        console.log('creating...')
     }
 
     const {msg} = alert
@@ -103,7 +124,7 @@ const Register = () => {
             onChange={element => setRepeatPassword(element.target.value)}
           />
         </div>
-        
+
         {msg && <Alert alert ={alert} />}
 
         <input
