@@ -43,7 +43,7 @@ const Register = () => {
         // Creating users in the API
 
         try {
-            const {data} = await axios.post('http://localhost:3000/users', {name, email, password})
+            const {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users`, {name, email, password})
 
             setAlert({
                 msg: data.msg, 
