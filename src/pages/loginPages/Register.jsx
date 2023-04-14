@@ -1,15 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Alert from "../../components/Alert";
 
 const Register = () => {
-  return (
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [repeatPassword, setRepeatPassword] = useState('')
+    const [alert, setAlert] = useState({})
+
+    const handleSubmit = element => {
+        element.preventDefault();
+
+        if([name, email, password, repeatPassword].includes('')){
+            setAlert({
+                msg:'Todos los campos son obligatorios',
+                error: true
+            })
+            return
+
+        }
+    }
+
+    const {msg} = alert
+
+ return (
     <>
       <h1 className="text-gray-600 text-3xl font-bold tracking-wide text-center">
         Crea tu cuenta y genera tu propia {""}
         <span className="text-slate-700">librería</span>
       </h1>
 
-      <form className="my-10 bg-white shadow rounded-lg px-10 py-5">
+      <form 
+        className="my-10 bg-white shadow rounded-lg px-10 py-5"
+        onSubmit={handleSubmit}
+        >
         <div className="my-5">
           <label
             className="uppercase text-gray-600 block text-lg font-bold tracking-wide"
@@ -22,6 +48,8 @@ const Register = () => {
             type="text"
             placeholder="Escribe tu nombre"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50 outline-sky-200"
+            value={name}
+            onChange={element => setName(element.target.value)}
           />
         </div>
 
@@ -37,6 +65,8 @@ const Register = () => {
             type="email"
             placeholder="Escribe tu email"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50 outline-sky-200"
+            value={email}
+            onChange={element => setEmail(element.target.value)}
           />
         </div>
 
@@ -52,6 +82,8 @@ const Register = () => {
             type="password"
             placeholder="Escribe tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50 outline-sky-200"
+            value={password}
+            onChange={element => setPassword(element.target.value)}
           />
         </div>
 
@@ -67,11 +99,15 @@ const Register = () => {
             type="password"
             placeholder="Vuelve a escribir tu contraseña para acceder"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-50 outline-sky-200"
+            value={repeatPassword}
+            onChange={element => setRepeatPassword(element.target.value)}
           />
         </div>
+        
+        {msg && <Alert alert ={alert} />}
 
         <input
-          id="submit"
+          type="submit"
           value="Crear cuenta"
           className="block w-2/3 mx-auto py-2 bg-sky-700 rounded text-center uppercase text-white tracking-wide font-medium mt-10 cursor-pointer hover:bg-sky-900 transition-colors duration-300 ease-linear focus:outline-none"
         />
@@ -85,6 +121,8 @@ const Register = () => {
           ¿Ya tienes una cuenta? Inicia sesión
         </Link>
       </nav>
+
+      
     </>
   );
 };
