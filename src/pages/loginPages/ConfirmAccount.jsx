@@ -4,8 +4,8 @@ const ConfirmAccount = () => {
   return (
     <>
     <h1 className="text-gray-600 text-3xl font-bold tracking-wide text-center">
-    <span className="text-slate-700 uppercase">¡Listo!<br></br></span> 
-    En breves te llegará un email para confirmar tu contraseña
+    <span className="text-slate-700 uppercase">Es hora de confirmar tu cuenta<br></br></span> 
+    Si quieres aprovechar Shelfie al máximo. Haz click en el siguiente botón para confirmar tu cuenta y empieza a crear y organizar tu librería personal.
       
     </h1>
     </>
