@@ -166,18 +166,7 @@ const Register = () => {
         >
           Inicia sesión
         </Link>
-      </form>
-
-      {/* <nav className="lg:flex lg:justify-between">
-        <Link
-          to="/"
-          className="block text-center text-neutral-500 text-sm hover:text-neutral-300 transition transition-duration-300 ease-lineal tracking-wide"
-        >
-          ¿Ya tienes una cuenta? Inicia sesión
-        </Link>
-      </nav> */}
-
-      
+      </form>      
     </>
   );
 };
