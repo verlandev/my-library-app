@@ -79,7 +79,7 @@ const Register = () => {
       </h1>
 
       <form 
-        className="my-10 w-4/5 m-auto bg-slate-700 shadow rounded-lg px-10 pb-10 pt-5"
+        className="my-10 m-auto bg-slate-700 shadow rounded-lg px-10 pb-10 pt-5"
         onSubmit={handleSubmit}
         >
         <div className="my-5">
