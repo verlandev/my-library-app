@@ -74,8 +74,8 @@ const Register = () => {
         className="invert w-1/5 mx-auto"
        />
       <h1 className="text-gray-500 text-3xl font-bold tracking-wide text-center">
-        Crea tu cuenta en <br></br>
-        <span className="text-slate-400">SHELFIE</span>
+        SHELFIE<br></br>
+        <span className="text-slate-400">Crea tu cuenta</span>
       </h1>
 
       <form 
