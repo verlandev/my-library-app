@@ -10,8 +10,8 @@ const Login = () => {
         className="invert w-1/5 mx-auto"
        />
       <h1 className="text-gray-600 text-3xl font-bold tracking-wide text-center">
-        Inicia sesión <br></br>
-        <span className="text-slate-400">SHELFIE</span>
+        SHELFIE<br></br>
+        <span className="text-slate-400">Inicia sesión</span>
       </h1>
 
       <form className="my-10 bg-slate-700 shadow rounded-lg px-10 pb-10 pt-5">
