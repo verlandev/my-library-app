@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "./../../assets/pluma.png";
 import { useState } from "react";
 import Alert from "../../components/Alert";
+import axios from "axios";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -18,6 +19,24 @@ const ForgotPassword = () => {
       })
       return
     }
+
+    try {
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users/forgot-password`,{ email })
+      
+      console.log(data)
+
+      setAlert({
+        msg: data.msg,
+        error: false
+      })
+      
+    } catch (error) {
+      setAlert({
+        msg: error.response.data.msg,
+        error: true
+      })
+    }
+
   }
 
   const { msg } = alert
@@ -47,7 +66,7 @@ const ForgotPassword = () => {
             id="email"
             type="email"
             placeholder="Escribe tu email"
-            className="w-full mt-3 p-3 border rounded-xl bg-gray-400 outline-sky-200 placeholder:text-slate-200"
+            className="w-full mt-3 p-3 border rounded-xl text-white bg-gray-400 outline-sky-200 placeholder:text-slate-200"
             value={email}
             onChange={ e => setEmail(e.target.value)}
           />
