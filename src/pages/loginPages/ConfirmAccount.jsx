@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import Alert from '../../components/Alert'
+import logo from './../../assets/pluma.png'
+
 
 const ConfirmAccount = () => {
 
@@ -40,11 +42,15 @@ const ConfirmAccount = () => {
 
   return (
     <>
-    <h1 className="text-gray-600 text-3xl font-bold tracking-wide text-center">
-    <span className="text-slate-700 uppercase">Es hora de confirmar tu cuenta<br></br></span> 
-    Si quieres aprovechar Shelfie al máximo. Haz click en el siguiente botón para confirmar tu cuenta y empieza a crear y organizar tu librería personal.
+    <img
+        src={logo}
+        className="invert w-1/5 mx-auto"
+       />
+    <h1 className="text-gray-500 text-3xl font-bold tracking-wide text-center">
+    <span className="text-slate-400 uppercase">SHELFIE<br></br></span> 
+    Confirma tu cuenta y comienza a gestionar tu librería.
     </h1>
-    <div className='mt-20 md:mt-10 shadow-lg px-5 py-10 rounded-xl bg-white'>
+    <div className='mt-20 md:mt-10 shadow-lg px-5 py-10 rounded-xl bg-slate-700'>
       {msg && <Alert alert={alert} />}
 
       {confirmedAccount && (
