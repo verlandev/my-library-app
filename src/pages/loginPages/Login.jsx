@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from './../../assets/pluma.png'
 import { useState } from "react";
 import Alert from "../../components/Alert";
+import axios from "axios";
 
 
 const Login = () => {
@@ -22,6 +23,20 @@ const Login = () => {
       return
     }
 
+    try {
+      
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users/login`, { email, password })
+      
+      localStorage.setItem('token', data.token)
+      setAlert({})
+      
+    } catch (error) {
+      setAlert({
+        msg: error.response.data.msg, 
+        error: true
+      })
+      
+    }
 
   }
 
