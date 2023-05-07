@@ -13,7 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [alert, setAlert] = useState(false)
 
-  const {  } = useAuth()
+  const { setAuth } = useAuth()
  
   
   const handleSubmit = async e => {
@@ -31,8 +31,9 @@ const Login = () => {
       
       const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users/login`, { email, password })
       
-      localStorage.setItem('token', data.token)
       setAlert({})
+      localStorage.setItem('token', data.token)
+      setAuth(data)
       
     } catch (error) {
       setAlert({
