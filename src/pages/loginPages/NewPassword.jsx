@@ -10,6 +10,8 @@ const NewPassword = () => {
 
   const [validatedToken, setValidatedToken] = useState(false)
   const [alert, setAlert] = useState({})
+  const [password, setPassword] = useState('')
+  const [modifiedPassword, setModifiedPassword] = useState(false)
 
   const params = useParams()
   const { token } = params
@@ -33,6 +35,33 @@ const NewPassword = () => {
     checkingToken()
   }, [])
 
+  const handleSubmit = async e => {
+    e.preventDefault()
+
+    if(password.length < 6) {
+      setAlert({
+        msg: 'La contraseña tiene que tener mínimo 6 caracteres',
+        error: true        
+      })
+      return
+    }
+
+    try{
+      const { data } = await axios.post (`${import.meta.env.VITE_BACKEND_URL}/users/forgot-password/${token}`, { password })
+      setAlert({
+        msg: data.msg,
+        error:false
+      })
+      setModifiedPassword(true)
+    } catch (error){
+      setAlert({
+        msg: error.response.data.msg,
+        error: true
+      })
+    }
+  }
+
+
   const { msg } = alert
 
   return (
@@ -49,7 +78,10 @@ const NewPassword = () => {
       {msg && <Alert alert = { alert } />}
 
       { validatedToken && (
-        <form className="my-10 bg-slate-700 shadow rounded-lg px-10 py-5">
+        <form 
+          className="my-10 bg-slate-700 shadow rounded-lg px-10 py-5"
+          onSubmit={handleSubmit}
+        >
         
         <div className="my-5">
           <label
@@ -63,17 +95,28 @@ const NewPassword = () => {
             type="password"
             placeholder="Escribe tu nueva contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-400 border-slate-500 outline-sky-200 text-white placeholder:text-slate-200"
+            value={password}
+            onChange={e => setPassword(e.target.value)} 
           />
         </div>
 
 
         <input
-          id="submit"
+          type="submit"
           value="Guardar nueva contraseña"
           className="w-full py-2 bg-sky-700 rounded text-center uppercase text-white tracking-wide font-medium mt-5 cursor-pointer hover:bg-sky-900 transition-colors duration-300 ease-linear focus:outline-none"
         />
       </form>
       )}
+
+      {modifiedPassword && (
+        <Link
+          to="/"
+          className="block text-center text-slate-500 text-sm hover:text-slate-800 transition transition-duration-300 ease-lineal tracking-wide"
+        >
+          Inicia sesión
+        </Link>
+      ) }
     </>
   )
 }
