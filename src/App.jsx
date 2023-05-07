@@ -5,6 +5,8 @@ import Register from "./pages/loginPages/Register";
 import ForgotPassword from "./pages/loginPages/ForgotPassword";
 import NewPassword from "./pages/loginPages/NewPassword";
 import ConfirmAccount from "./pages/loginPages/ConfirmAccount";
+import Libraries from "./pages/Libraries";
+import ProtectedRoute from "./layouts/ProtectedRoute";
 
 import { AuthProvider } from "./context/AuthProvider";
 
@@ -19,6 +21,10 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/forgot-password/:token" element={<NewPassword />} />
             <Route path="/confirm/:id" element={<ConfirmAccount />} />
+          </Route>
+
+          <Route path='/libraries' element={<ProtectedRoute />}>
+            <Route index element = {<Libraries />} />
           </Route>
         </Routes>
       </AuthProvider>
