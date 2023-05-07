@@ -1,8 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from './../../assets/pluma.png'
+import { useState } from "react";
+import Alert from "../../components/Alert";
+
 
 const Login = () => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [alert, setAlert] = useState(false)
+  
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if([email, password].includes('')) {
+      setAlert({
+        msg: "Todos los campos son obligatorios", 
+        error: true
+      })
+      return
+    }
+
+
+  }
+
+  const { msg } = alert
+
   return (
     <>
       <img
@@ -14,7 +38,12 @@ const Login = () => {
         <span className="text-slate-400">Inicia sesión</span>
       </h1>
 
-      <form className="my-10 bg-slate-700 shadow rounded-lg px-10 pb-10 pt-5">
+      { msg && <Alert alert = {alert} />}
+
+      <form 
+        className="my-10 bg-slate-700 shadow rounded-lg px-10 pb-10 pt-5"
+        onSubmit={handleSubmit}
+        >
         <div className="my-5">
           <label
             className="uppercase text-gray-400 block text-lg font-bold tracking-wide"
@@ -27,6 +56,8 @@ const Login = () => {
             type="email"
             placeholder="Escribe tu email"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-400 border-slate-500 outline-sky-200 placeholder:text-slate-200"
+            value={ email }
+            onChange={ e => setEmail(e.target.value) }
           />
         </div>
 
@@ -42,11 +73,13 @@ const Login = () => {
             type="password"
             placeholder="Escribe tu contraseña"
             className="w-full mt-3 p-3 border rounded-xl bg-gray-400 border-slate-500 outline-sky-200 placeholder:text-slate-200"
+            value={password}
+            onChange={ e => setPassword(e.target.value) }
           />
         </div>
 
         <input
-          id="submit"
+          type="submit"
           value="Entra ahora"
           className="block w-2/3 mx-auto py-2 bg-cyan-500 rounded-xl text-center uppercase text-white tracking-wide font-medium mt-10 cursor-pointer hover:bg-cyan-600 transition-colors duration-300 ease-linear focus:outline-none"
         />
