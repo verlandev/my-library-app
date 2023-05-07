@@ -112,7 +112,7 @@ const NewPassword = () => {
       {modifiedPassword && (
         <Link
           to="/"
-          className="block text-center text-slate-500 text-sm hover:text-slate-800 transition transition-duration-300 ease-lineal tracking-wide"
+          className="block w-2/3 mx-auto py-2 border rounded-xl text-center uppercase text-cyan-400 tracking-wide font-medium cursor-pointer hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition-colors duration-300 ease-linear focus:outline-none"
         >
           Inicia sesión
         </Link>
