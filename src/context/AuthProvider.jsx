@@ -4,13 +4,14 @@ const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
 
+
     return(
         <AuthContext.Provider
             value={{
-
+                
             }}
         >
-        {children}
+            {children}
         </AuthContext.Provider>
     )
 
@@ -19,3 +20,5 @@ const AuthProvider = ({children}) => {
 export {
     AuthProvider
 }
+
+export default AuthContext

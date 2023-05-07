@@ -4,6 +4,7 @@ import logo from './../../assets/pluma.png'
 import { useState } from "react";
 import Alert from "../../components/Alert";
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 
 
 const Login = () => {
@@ -11,6 +12,9 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [alert, setAlert] = useState(false)
+
+  const {  } = useAuth()
+ 
   
   const handleSubmit = async e => {
     e.preventDefault();
