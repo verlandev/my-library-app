@@ -18,8 +18,6 @@ const ProtectedRoute = () => {
             <Header/>
 
             <div>
-              <Sidebar />
-
                 <main>
                   <Outlet />
                 </main>
