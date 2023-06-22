@@ -1,4 +1,6 @@
 import React from 'react'
+import { IoIosClose } from 'react-icons/io'
+import { TbLayoutGridAdd } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 
 const Sidebar = ({ sidebarOpen, handleCloseSidebar}) => {
@@ -14,19 +16,17 @@ const Sidebar = ({ sidebarOpen, handleCloseSidebar}) => {
       >
         <div>
           <ul className={`${!sidebarOpen && "invisible"} flex flex-col w-full h-screen gap-5 justify-center ml-10`}>
-            <li>Item 1</li>
+            <li className='flex border w-2/3 flex-row justify-left gap-2 items-center text-xl'><TbLayoutGridAdd />Home</li>
             <li>Item 2</li>
             <li>Item 3</li>
             <li>Item 4</li>
             <li>Item 5</li>
           </ul>
         
-          <button 
-            className='rotate-45 cursor-pointer text-7xl text-slate-600 absolute top-5 right-10'
+          <IoIosClose 
+            className=' cursor-pointer text-7xl text-slate-600 absolute top-5 right-10 hover:text-cyan-600 transition-colors duration-300'
             onClick = {(toggleSidebar)} 
-          >
-          +
-          </button>
+          />
       </div>
     </aside>
   )
