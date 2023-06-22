@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
+import Header from '../components/Header'
 
 const ProtectedRoute = () => {
 
@@ -10,7 +11,18 @@ const ProtectedRoute = () => {
 
   return (
     <>
-      { auth._id ? <Outlet /> : <Navigate to ='/' /> }
+      { auth._id ?  
+      (
+        <div>
+            <Header/>
+
+            <div>
+                <main>
+                  <Outlet />
+                </main>
+            </div>
+        </div>
+      ): <Navigate to ='/' /> }
     </>
   )
 }
