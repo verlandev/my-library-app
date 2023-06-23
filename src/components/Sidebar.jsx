@@ -1,6 +1,9 @@
 import React from "react";
 import { IoIosClose } from "react-icons/io";
+import { IoMdSettings } from "react-icons/io"
+import { ImBooks } from "react-icons/im"
 import { TbLayoutGridAdd } from "react-icons/tb";
+import { GiFallingStar } from "react-icons/gi"
 import { Link } from "react-router-dom";
 
 const Sidebar = ({ sidebarOpen, handleCloseSidebar }) => {
@@ -22,17 +25,40 @@ const Sidebar = ({ sidebarOpen, handleCloseSidebar }) => {
         >
           <Link
             to="/libraries"
-            className="flex flex-row justify-left gap-4 items-center text-xl relative text-teal-500  w-fit"
+            className="flex flex-row justify-left gap-4 items-center text-xl text-slate-600 relative  w-fit"
           >
             <TbLayoutGridAdd className="text-3xl" />
-            <p className="after:content-[''] after:absolute h-[4px] bg-teal-500 ">
+            <p className="relative after:h-[4px] after:bg-teal-500 after:w-0 after:absolute after:left-0 after:-bottom-[5px] hover:after:w-full hover:after:transition-all hover:after:duration-500 after:duration-500">
               Home
             </p>
           </Link>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 4</li>
-          <li>Item 5</li>
+          <Link
+            to="/libraries"
+            className="flex flex-row justify-left gap-4 items-center text-xl text-slate-600 relative  w-fit"
+          >
+            <ImBooks className="text-3xl" />
+            <p className="relative after:h-[4px] after:bg-teal-500 after:w-0 after:absolute after:left-0 after:-bottom-[5px] hover:after:w-full hover:after:transition-all hover:after:duration-500 after:duration-500">
+              Mi biblioteca
+            </p>
+          </Link>
+          <Link
+            to="/libraries"
+            className="flex flex-row justify-left gap-4 items-center text-xl text-slate-600 relative  w-fit"
+          >
+            <GiFallingStar className="text-3xl" />
+            <p className="relative after:h-[4px] after:bg-teal-500 after:w-0 after:absolute after:left-0 after:-bottom-[5px] hover:after:w-full after:transition-all hover:after:duration-500 after:duration-500">
+              Mi top 10
+            </p>
+          </Link>
+          <Link
+            to="/libraries"
+            className="flex flex-row justify-left gap-4 items-center text-xl text-slate-600 relative  w-fit"
+          >
+            <IoMdSettings className="text-3xl" />
+            <p className="relative after:h-[4px] after:bg-teal-500 after:w-0 after:absolute after:left-0 after:-bottom-[5px] hover:after:w-full after:transition-all hover:after:duration-500 after:duration-500">
+              Ajustes
+            </p>
+          </Link>
         </ul>
 
         <IoIosClose
