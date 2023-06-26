@@ -1,9 +1,7 @@
 import React from "react";
 import logoMenu from "../assets/menu.png";
-import logo from "../assets/pluma.png";
 import Sidebar from "./Sidebar";
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
 
